@@ -31,6 +31,12 @@ jobs:
           grep -q 'Artemisearch' /tmp/preferences.html
           curl --compressed -fsS -H 'Accept-Language: en-US,en;q=0.9' -H 'X-Real-IP: 198.51.100.20' -H 'User-Agent: Mozilla/5.0 Firefox/158.0' -H 'Accept: text/html' 'http://localhost:8080/search/search?q=WebKit&categories=general&lens=research' -o /tmp/results.html
           grep -q 'Artemisearch' /tmp/results.html
+          curl -fsS http://localhost:8080/search/static/themes/simple/artemis-ai.js | grep -q 'Generate overview'
+          curl --compressed -fsS -H 'Accept-Language: en-US' -H 'X-Real-IP: 198.51.100.20' -H 'User-Agent: Mozilla/5.0 Firefox/158.0' -H 'Accept: text/html' 'http://localhost:8080/search/search?q=WebKit%20%23docs%20%23site%3Awebkit.org%20%23research' -o /tmp/tags.html
+          grep -q 'Artemisearch' /tmp/tags.html
+          code=$(curl -sS -o /tmp/ai-error.json -w '%{http_code}' -X POST -H 'Content-Type: application/json' -H 'Origin: http://localhost:8080' -H 'X-Real-IP: 198.51.100.20' -H 'User-Agent: Mozilla/5.0 Firefox/158.0' --data '{}' http://localhost:8080/search/artemis/overview)
+          test "$code" = 400
+          grep -q 'Choose OpenAI or Anthropic' /tmp/ai-error.json
       - name: Container diagnostics
         if: always()
         run: docker logs search || true

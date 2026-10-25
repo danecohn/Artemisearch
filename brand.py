@@ -66,3 +66,30 @@ p=root/'templates/simple/index.html';text=p.read_text().replace('The whole web. 
 # Never serve stale compressed variants of modified resources.
 for path in (root/'static/themes/simple').rglob('*'):
     if path.suffix in ['.gz','.br'] and path.name.split('.')[0] in ['altstack','altstack-account','artemisearch']:path.unlink()
+# Replace the result-header wordmark with our own identity; retain upstream credits.
+p=root/'templates/simple/search.html';text=p.read_text();needle="{% include 'simple/searxng-wordmark.min.svg' without context %}"
+if needle not in text:raise RuntimeError('Search header wordmark integration changed')
+text=text.replace(needle,"<img src=\"{{ url_for('static', filename='img/altstack.svg') }}\" alt=\"\"><span class=\"artemis-wordmark\">Artemisearch</span>")
+p.write_text(text)
+# Wordmark and stylesheet may have upstream precompressed siblings.
+for name in ['altstack.css','artemisearch.js']:
+    for suffix in ['.gz','.br']:
+        path=root/'static/themes/simple'/(name+suffix)
+        if path.exists():path.unlink()
+# Hashtag query planning happens before provider retrieval; narrow again after it.
+shutil.copy2(assets/'artemis_query.py',root/'artemis_query.py')
+p=root/'webapp.py';text=p.read_text();needle='    # search\n    search_query = None'
+if text.count(needle)!=1:raise RuntimeError('Hashtag query integration changed')
+text=text.replace(needle,"    from searx.artemis_query import plan as artemis_plan, narrow as artemis_narrow\n    artemis_query_plan = artemis_plan(sxng_request.form.get('q',''), sxng_request.form)\n    if not artemis_query_plan['effective']:\n        return index_error(output_format, 'Add a search term alongside your filters.'), 400\n\n"+needle)
+needle='sxng_request.preferences, sxng_request.form\n        )'
+if text.count(needle)!=1:raise RuntimeError('Hashtag provider query integration changed')
+text=text.replace(needle,"sxng_request.preferences, artemis_query_plan['form']\n        )")
+text=text.replace("artemis_rerank(search_query.query, result_container.get_ordered_results(), sxng_request.args.get('lens', 'balanced'))","artemis_rerank(artemis_query_plan['query']+' '+' '.join(artemis_query_plan['topics']), artemis_narrow(result_container.get_ordered_results(), artemis_query_plan), artemis_query_plan['lens'] or sxng_request.form.get('lens', 'balanced'))")
+p.write_text(text)
+shutil.copy2(assets/'artemis_ai.py',root/'artemis_ai.py')
+p=root/'webapp.py';text=p.read_text();needle="if __name__ == '__main__':"
+if needle not in text:raise RuntimeError('AI route integration changed')
+text=text.replace(needle,'from searx.artemis_ai import register as register_artemis_ai\nregister_artemis_ai(app)\n\n'+needle)
+p.write_text(text)
+shutil.copy2(assets/'artemis-ai.js',root/'static/themes/simple/artemis-ai.js')
+p=root/'templates/simple/base.html';text=p.read_text().replace('</head>', '<script defer src="{{ url_for(\'static\', filename=\'artemis-ai.js\') }}"></script></head>');p.write_text(text)
