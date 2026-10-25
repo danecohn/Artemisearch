@@ -3,7 +3,8 @@
 (()=>{
  const form=document.querySelector('#search') || document.querySelector('form[action*="search"]');
  if(!form)return;
- const current=new URL(location.href).searchParams.get('lens')||'balanced';
+ const taggedLens=[...(document.querySelector('#q')?.value||'').matchAll(/(?:^|\s)#(balanced|research|discovery)(?=\s|$)/gi)].pop()?.[1]?.toLowerCase();
+ const current=taggedLens||new URL(location.href).searchParams.get('lens')||'balanced';
  const lenses=[['balanced','Balanced','Agreement, relevance, and variety'],['research','Research','More weight on the words you searched'],['discovery','Discovery','More variety across sites and overlapping text']];
  const bar=document.createElement('div');bar.className='artemis-lenses';bar.setAttribute('role','group');bar.setAttribute('aria-label','Search perspective');
  const hidden=document.createElement('input');hidden.type='hidden';hidden.name='lens';hidden.value=lenses.some(x=>x[0]===current)?current:'balanced';form.append(hidden);
