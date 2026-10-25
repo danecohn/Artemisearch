@@ -87,7 +87,7 @@ text=text.replace(needle,"sxng_request.preferences, artemis_query_plan['form']\n
 text=text.replace("artemis_rerank(search_query.query, result_container.get_ordered_results(), sxng_request.args.get('lens', 'balanced'))","artemis_rerank(artemis_query_plan['query']+' '+' '.join(artemis_query_plan['topics']), artemis_narrow(result_container.get_ordered_results(), artemis_query_plan), artemis_query_plan['lens'] or sxng_request.form.get('lens', 'balanced'))")
 p.write_text(text)
 shutil.copy2(assets/'artemis_ai.py',root/'artemis_ai.py')
-p=root/'webapp.py';text=p.read_text();needle="if __name__ == '__main__':"
+p=root/'webapp.py';text=p.read_text();needle="def run():"
 if needle not in text:raise RuntimeError('AI route integration changed')
 text=text.replace(needle,'from searx.artemis_ai import register as register_artemis_ai\nregister_artemis_ai(app)\n\n'+needle)
 p.write_text(text)
