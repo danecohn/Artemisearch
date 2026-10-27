@@ -5,10 +5,10 @@ root=Path(os.environ.get('VIGILTECH_UPSTREAM_ROOT','/usr/local/searxng/searx'));
 base=root/'templates/simple/base.html';text=base.read_text()
 text=text.replace('SearXNG — a privacy-respecting, open metasearch engine','Vigil Search — independent web metasearch')
 text=text.replace('</head>', '<link rel="stylesheet" href="{{ url_for(\'static\', filename=\'altstack.css\') }}"><script defer src="{{ url_for(\'static\', filename=\'altstack-account.js\') }}"></script></head>')
-text=text.replace('<body class=', '<body class=',1).replace('<main id=', '<header class="vt-menubar"><a href="/" class="vt-brand"><img src="{{ url_for(\'static\', filename=\'img/altstack.svg\') }}" alt="">Vigil Search</a><nav><a href="/office">Office</a><a href="/warehouse">Warehouse</a><a href="/mail">Mail</a><a href="/calendar">Calendar</a><a href="/social">Social</a><a id="search-account" href="/social#account">Your account</a></nav></header><main id=',1)
+text=text.replace('<body class=', '<body class=',1).replace('<main id=', '<header class="vt-menubar"><a href="/" class="vt-brand"><img src="{{ url_for(\'static\', filename=\'vigiltech/product-icons/search/web/icon-192.png\') }}" alt="">Vigil Search</a><nav><a href="/office">Office</a><a href="/warehouse">Warehouse</a><a href="/mail">Mail</a><a href="/calendar">Calendar</a><a href="/social">Social</a><a id="search-account" href="/social#account">Your account</a></nav></header><main id=',1)
 text=text.replace("{{ _('Powered by') }} <a", "VigilTech · {{ _('Powered by') }} <a")
 base.write_text(text)
-p=root/'templates/simple/index.html';p.write_text(p.read_text().replace('<h1>SearXNG</h1>','<img class="vt-search-mark" src="{{ url_for(\'static\', filename=\'img/altstack.svg\') }}" alt=""><h1>Vigil Search</h1><p class="vt-search-note">The whole web. A different perspective.<br>No ads. No paid placements.</p>'))
+p=root/'templates/simple/index.html';p.write_text(p.read_text().replace('<h1>SearXNG</h1>','<img class="vt-search-mark" src="{{ url_for(\'static\', filename=\'vigiltech/product-icons/search/web/icon-192.png\') }}" alt=""><h1>Vigil Search</h1><p class="vt-search-note">The whole web. A different perspective.<br>No ads. No paid placements.</p>'))
 shutil.copy2(assets/'logo.svg',root/'static/themes/simple/img/altstack.svg')
 shutil.copy2(assets/'logo.svg',root/'static/themes/simple/img/favicon.svg')
 for name in ['altstack.css','altstack-account.js']:shutil.copy2(assets/name,root/'static/themes/simple'/name)
@@ -63,14 +63,14 @@ text=text.replace('<a href="/warehouse">Warehouse</a>','<a href="/warehouse">Vig
 text=text.replace('</head>', '<script defer src="{{ url_for(\'static\', filename=\'artemisearch.js\') }}"></script></head>')
 p.write_text(text)
 shutil.copy2(assets/'artemisearch.js',root/'static/themes/simple/artemisearch.js')
-p=root/'templates/simple/index.html';text=p.read_text().replace('The whole web. A different perspective.','A clearer view of the web.').replace('No ads. No paid placements.','No ads. No paid placements. Your choice of perspective.');p.write_text(text)
+p=root/'templates/simple/index.html';text=p.read_text().replace('The whole web. A different perspective.<br>No ads. No paid placements.','Metasearch with no ads and no paid placements.');p.write_text(text)
 # Never serve stale compressed variants of modified resources.
 for path in (root/'static/themes/simple').rglob('*'):
     if path.suffix in ['.gz','.br'] and path.name.split('.')[0] in ['altstack','altstack-account','artemisearch']:path.unlink()
 # Replace the result-header wordmark with our own identity; retain upstream credits.
 p=root/'templates/simple/search.html';text=p.read_text();needle="{% include 'simple/searxng-wordmark.min.svg' without context %}"
 if needle not in text:raise RuntimeError('Search header wordmark integration changed')
-text=text.replace(needle,"<img src=\"{{ url_for('static', filename='img/altstack.svg') }}\" alt=\"\"><span class=\"vt-wordmark\">Vigil Search</span>")
+text=text.replace(needle,"<img src=\"{{ url_for('static', filename='vigiltech/product-icons/search/web/icon-192.png') }}\" alt=\"\"><span class=\"vt-wordmark\">Vigil Search</span>")
 p.write_text(text)
 # Wordmark and stylesheet may have upstream precompressed siblings.
 for name in ['altstack.css','artemisearch.js']:

@@ -10,7 +10,7 @@ class Brand(unittest.TestCase):
   root=Path(__file__).resolve().parents[1];css=(root/'vigiltech-search.css').read_text()
   self.assertIn('visibility:visible!important',css)
   for old in ['--cs-','--vt-green-','.artemis-','.altstack-']:self.assertNotIn(old,css)
-  self.assertIn('var(--vt-pink-600)',css);self.assertIn('prefers-reduced-transparency',css)
+  self.assertIn('var(--vt-pink-600)',css);self.assertNotIn('#ff0058',css.lower());self.assertIn('#main_index',css);self.assertIn('prefers-reduced-transparency',css)
   self.assertIn('Vigil Search',(root/'brand.py').read_text())
 
  def test_assigned_search_web_kit(self):

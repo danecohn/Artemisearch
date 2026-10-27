@@ -1,4 +1,4 @@
-# Artemis Rank v1
+# Vigil Rank v1
 
 The engine is ad-free **metasearch**, not yet a new web-scale crawl/index. SearXNG obtains candidates from enabled providers. Provider failures and empty responses are shown by the upstream UI; there is no silent fallback to a different branded search service. Vigil Search reranks at most 300 candidates per response, on that response's page, not across the entire web or every result page.
 

@@ -1,0 +1,10 @@
+/* Layout-only stand-in for the upstream SearXNG "simple" stylesheet. Preview use only; it is never shipped in the image.
+   It defines no colours except a neutral light default so that the VigilTech override has something to override. */
+*,*::before,*::after{box-sizing:border-box}body{margin:0;font-size:16px;line-height:1.5;background:#fff;color:#222}a{color:#06c}
+#search_header{display:grid;grid-template-columns:190px minmax(0,1fr);align-items:center;padding:10px 24px;gap:16px}#search_logo a{display:flex;align-items:center;text-decoration:none;color:inherit}#search_logo img{width:28px;height:28px}
+#search_view{display:flex}.search_box{display:flex;flex:1;align-items:center;border:1px solid #ccc;border-radius:12px;padding:4px 6px}#q{flex:1;border:0;outline:0;font-size:16px;padding:8px 10px;min-width:0}
+main#main_index .index h1{font-size:44px;margin:12px 0}.index{margin:0 auto}#links_on_top{margin-top:16px}
+#results_view{display:block}#main_results{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;max-width:1100px;margin:0 auto}#urls{grid-column:1;grid-row:1}#sidebar{grid-column:2;grid-row:1}#pagination{grid-column:1}
+#categories_container{padding:0 24px;max-width:1100px;margin:0 auto}article.result{display:block}article.result h3{margin:4px 0;font-size:19px}.content{margin:6px 0}.url_wrapper{font-size:13px;text-decoration:none}
+nav.tabs a{display:inline-block}fieldset{min-width:0}table{font-size:14px}
+@media(max-width:800px){#main_results{grid-template-columns:1fr}#sidebar{grid-column:1;grid-row:auto}}

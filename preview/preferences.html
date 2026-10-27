@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en" data-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Preferences - Vigil Search</title>
+<!-- STATIC PREVIEW. Hand-written markup shaped like SearXNG's "simple" theme plus the elements brand.py injects.
+     It is not rendered by SearXNG; layout-only stand-in CSS replaces the upstream stylesheet. -->
+<link rel="icon" href="../vigiltech/product-icons/search/web/favicon.ico"><link rel="apple-touch-icon" href="../vigiltech/product-icons/search/web/apple-touch-icon.png">
+<link rel="stylesheet" href="searxng-standin.css">
+<link rel="stylesheet" href="../vigiltech/css/vigilsans.css"><link rel="stylesheet" href="../vigiltech/css/goldengate.css"><link rel="stylesheet" href="../vigiltech-search.css">
+<script defer src="../vigiltech.js"></script><script defer src="../artemisearch.js"></script><script defer src="../artemis-ai.js"></script>
+</head><body class="vt preferences_endpoint">
+<header class="vt-menubar"><a href="index.html" class="vt-brand"><img src="../vigiltech/product-icons/search/web/icon-192.png" alt="">Vigil Search</a><nav><a href="#">Vigil Office</a><a href="#">Vigil Drive</a><a href="#">Vigil Mail</a><a href="#">Vigil Calendar</a><a href="#">Vigil Social</a><a id="search-account" href="#">Your account</a></nav></header>
+<main id="main_preferences"><h1>Preferences</h1>
+<nav class="tabs" aria-label="Preference sections"><a href="#" aria-selected="true" aria-current="page">General</a><a href="#">User interface</a><a href="#">Privacy</a><a href="#">Engines</a><a href="#">Special queries</a><a href="#">Cookies</a></nav>
+<form method="post" action="#"><fieldset><legend>Default categories</legend><div class="category"><input type="checkbox" id="pc_general" checked><label for="pc_general">General</label></div> <div class="category"><input type="checkbox" id="pc_images"><label for="pc_images">Images</label></div></fieldset>
+<fieldset><legend>Search language</legend><p class="description">What language to use for results.</p><select aria-label="Search language"><option>Auto-detect</option><option>English</option><option>Deutsch</option></select></fieldset>
+<fieldset><legend>Safe search</legend><p class="description">Filter content.</p><select aria-label="Safe search"><option>Moderate</option><option>Strict</option><option>None</option></select></fieldset>
+<fieldset><legend>Engines</legend><table class="table_settings"><thead><tr><th>Name</th><th>Description</th><th>Allow</th></tr></thead><tbody><tr><td><label>duckduckgo</label></td><td class="description">Privacy-focused web search.</td><td><input type="checkbox" checked aria-label="duckduckgo"></td></tr><tr><td><label>brave</label></td><td class="description">Independent web index.</td><td><input type="checkbox" checked aria-label="brave"></td></tr><tr><td><label>wikipedia</label></td><td class="description">Encyclopedia articles.</td><td><input type="checkbox" checked aria-label="wikipedia"></td></tr><tr><td><label>startpage</label></td><td class="description">Proxy for web results.</td><td><input type="checkbox"  aria-label="startpage"></td></tr></tbody></table></fieldset>
+<div class="preferences_buttons"><input type="submit" value="Save"> <input type="submit" value="Save (disabled)" disabled> <a class="btn" href="#">Reset defaults</a> <span class="preferences_back"><a href="index.html">Back</a></span></div></form></main><footer><p>VigilTech &middot; <a href="#">Modified source (AGPL)</a> &middot; Powered by <a href="#">SearXNG</a> &middot; <a href="#">Privacy policy</a> &middot; <a href="#">Contact instance maintainer</a></p></footer>
+</body></html>

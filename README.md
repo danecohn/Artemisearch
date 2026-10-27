@@ -1,6 +1,6 @@
 # Vigil Search
 
-**A clearer view of the web. No ads. No paid placements.**
+Metasearch with no ads and no paid placements.
 
 An open-source search engine by **VigilTech**, founded by **Demetria Althea Cohn**. Built from AltStackSearch and SearXNG with an original, explainable ranking layer and a quiet companion interface for Lookout, macOS, mobile, and any modern browser.
 
@@ -9,9 +9,13 @@ An open-source search engine by **VigilTech**, founded by **Demetria Althea Cohn
 - No advertising, sponsored ranking, affiliate rewriting, or added query/click tracking.
 - macOS system typography, translucent chrome, rounded result cards, accessible touch-sized controls.
 - Lookout defaults to Vigil Search; Kagi, DuckDuckGo, and Google remain user choices.
-- No domain needed: initially served through the existing AltStack `/search/` route.
+- Served under the existing `/search/` route; no separate domain is needed.
 
 This version is **metasearch**: it depends on upstream providers for candidates. It is not a web-scale independent index or a claim of superior search quality. AT Protocol inspired the architecture; no Bluesky code is reused and no PDS sync/federated ranker is claimed. See [attribution](ATTRIBUTION.md), [ranking and limits](docs/RANKING.md), and [LICENSE](LICENSE).
+
+## Look and contrast
+
+The interface uses the VigilTech Golden Gate design system, copied into `vigiltech/` (Night and Dawn appearances, Vigil Sans, frosted header, pink primary controls). `preview/` holds static pages (search home, results, preferences) for checking the theme without running SearXNG: `python3 -m http.server` from the repository root, then open `/preview/index.html`. They are hand-written markup, not SearXNG output, and are excluded from the Docker image.
 
 ## Run
 
