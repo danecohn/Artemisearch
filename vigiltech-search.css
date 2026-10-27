@@ -103,3 +103,5 @@ body.vt:not(.index_endpoint) .vt-lenses,body.vt:not(.index_endpoint) .vt-tags-he
 
 /* The real upstream template gives nested link spans their own color. */
 .vt #links_on_top a span{color:inherit!important}
+/* Utility labels need a guaranteed surface over every wallpaper gradient stop. */
+.vt #links_on_top{background:var(--vt-surface)!important;color:var(--vt-label);border:1px solid var(--vt-separator);border-radius:var(--vt-r-control);padding:6px 12px}
