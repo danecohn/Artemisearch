@@ -1,4 +1,4 @@
-// Copyright 2026 Artemis Softworks LLC. AGPL-3.0-or-later.
+// Copyright 2026 Cohnsoft. AGPL-3.0-or-later.
 // Keys and conversations exist only in this page's memory. No Web Storage.
 (()=>{
  const area=document.querySelector('#urls');if(!area)return;
@@ -6,7 +6,7 @@
  const sources=Array.from(document.querySelectorAll('article.result')).map(article=>{const link=article.querySelector('h3 a');return link?{title:link.textContent.trim().slice(0,150),url:link.href.slice(0,500),snippet:(article.querySelector('.content')?.textContent.trim()||'').slice(0,700)}:null}).filter(Boolean).filter(s=>/^https?:\/\//.test(s.url)).slice(0,8);
  const panel=make('section',{class:'artemis-ai','aria-label':'Optional AI overview'}),header=make('header'),heading=make('div'),eyebrow=make('small',{},'YOUR AI. YOUR CHOICE.'),title=make('h2',{},'A little perspective.');heading.append(eyebrow,title);
  const toggleLabel=make('label',{class:'artemis-ai-switch'}),toggle=make('input',{type:'checkbox','aria-label':'Enable AI overview'});toggleLabel.append(toggle,make('span',{},'AI overview · off'));header.append(heading,toggleLabel);panel.append(header);
- const controls=make('div',{class:'artemis-ai-controls',hidden:''}),notice=make('p',{class:'artemis-ai-notice'},'Uses your own paid API account. Your key, question, result snippets, and follow-ups pass through Artemisearch to the provider you choose. Your key and conversation are not saved by Artemisearch and clear when this page closes, reloads, or AI is turned off. Provider retention policies still apply.');controls.append(notice);
+ const controls=make('div',{class:'artemis-ai-controls',hidden:''}),notice=make('p',{class:'artemis-ai-notice'},'Uses your own paid API account. Your key, question, result snippets, and follow-ups pass through Cohnsoft Search to the provider you choose. Your key and conversation are not saved by Cohnsoft Search and clear when this page closes, reloads, or AI is turned off. Provider retention policies still apply.');controls.append(notice);
  const settings=make('div',{class:'artemis-ai-settings'}),providerLabel=make('label',{},'Provider'),provider=make('select',{'aria-label':'AI provider'});for(const[value,label]of[['openai','OpenAI'],['anthropic','Anthropic']])provider.append(make('option',{value},label));providerLabel.append(provider);
  const modelLabel=make('label',{},'Model ID'),model=make('input',{type:'text',value:'gpt-5-mini','aria-label':'AI model ID',autocomplete:'off',spellcheck:'false'});modelLabel.append(model);
  const keyLabel=make('label',{class:'artemis-ai-key'},'API key · this page only'),key=make('input',{type:'password','aria-label':'Your API key',placeholder:'Paste your provider API key',autocomplete:'off',spellcheck:'false','data-1p-ignore':'true'});keyLabel.append(key);settings.append(providerLabel,modelLabel,keyLabel);controls.append(settings);
