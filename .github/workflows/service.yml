@@ -1,6 +1,8 @@
-name: Build and verify Artemisearch
+name: Build and verify Vigil Search
 on:
   push:
+    branches: [main]
+  pull_request:
     branches: [main]
   workflow_dispatch:
 permissions:
@@ -23,17 +25,17 @@ jobs:
           docker run -d --name search --network search-test -p 8080:8080 -e SEARXNG_SECRET=search-test-secret-not-production -e SEARXNG_BASE_URL=http://localhost:8080/search/ -e SEARXNG_VALKEY_URL=redis://:search-test-password@search-cache:6379/0 artemisearch
           for attempt in $(seq 1 60); do curl -fsS http://localhost:8080/search/healthz -o /tmp/health.txt && break; sleep 2; done
           curl --compressed -fsS -H 'Accept-Language: en-US,en;q=0.9' -H 'X-Real-IP: 198.51.100.20' -H 'User-Agent: Mozilla/5.0 Firefox/158.0' -H 'Accept: text/html' http://localhost:8080/search/ -o /tmp/search.html
-          grep -q 'Artemisearch' /tmp/search.html
+          grep -q 'Vigil Search' /tmp/search.html
           curl -fsS http://localhost:8080/search/static/themes/simple/altstack.css -o /tmp/theme.css
           test -s /tmp/theme.css
           curl -fsS http://localhost:8080/search/static/themes/simple/artemisearch.js | grep -q "Perspective"
           curl --compressed -fsS -H 'Accept-Language: en-US,en;q=0.9' -H 'X-Real-IP: 198.51.100.20' -H 'User-Agent: Mozilla/5.0 Firefox/158.0' -H 'Accept: text/html' http://localhost:8080/search/preferences -o /tmp/preferences.html
-          grep -q 'Artemisearch' /tmp/preferences.html
+          grep -q 'Vigil Search' /tmp/preferences.html
           curl --compressed -fsS -H 'Accept-Language: en-US,en;q=0.9' -H 'X-Real-IP: 198.51.100.20' -H 'User-Agent: Mozilla/5.0 Firefox/158.0' -H 'Accept: text/html' 'http://localhost:8080/search/search?q=WebKit&categories=general&lens=research' -o /tmp/results.html
-          grep -q 'Artemisearch' /tmp/results.html
+          grep -q 'Vigil Search' /tmp/results.html
           curl -fsS http://localhost:8080/search/static/themes/simple/artemis-ai.js | grep -q 'Generate overview'
           curl --compressed -fsS -H 'Accept-Language: en-US' -H 'X-Real-IP: 198.51.100.20' -H 'User-Agent: Mozilla/5.0 Firefox/158.0' -H 'Accept: text/html' 'http://localhost:8080/search/search?q=WebKit%20%23docs%20%23site%3Awebkit.org%20%23research' -o /tmp/tags.html
-          grep -q 'Artemisearch' /tmp/tags.html
+          grep -q 'Vigil Search' /tmp/tags.html
           code=$(curl -sS -o /tmp/ai-error.json -w '%{http_code}' -X POST -H 'Content-Type: application/json' -H 'Origin: http://localhost:8080' -H 'X-Real-IP: 198.51.100.20' -H 'User-Agent: Mozilla/5.0 Firefox/158.0' --data '{}' http://localhost:8080/search/artemis/overview)
           test "$code" = 400
           grep -q 'Choose OpenAI or Anthropic' /tmp/ai-error.json

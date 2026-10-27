@@ -1,6 +1,6 @@
 # Attribution and open-source foundations
 
-Cohnsoft Search is produced by **Cohnsoft**, founded by **Demetria Althea Cohn**. Original modifications, ranking code, and interface: © 2026 Cohnsoft, AGPL-3.0-or-later. No warranty; see LICENSE. Corresponding modified source is available at https://github.com/danecohn/Artemisearch .
+Vigil Search is produced by **VigilTech**, founded by **Demetria Althea Cohn**. Original modifications, ranking code, and interface: © 2026 VigilTech, AGPL-3.0-or-later. No warranty; see LICENSE. Corresponding modified source is available at https://github.com/danecohn/Artemisearch .
 
 ## Reused software
 
@@ -9,7 +9,7 @@ Cohnsoft Search is produced by **Cohnsoft**, founded by **Demetria Althea Cohn**
 
 ## Architectural inspiration, not copied code or an affiliation
 
-**AT Protocol and Bluesky**, https://atproto.com/guides/overview and https://github.com/bluesky-social/feed-generator : separation of data hosting, indexing/application views, and user-selected feed algorithms inspired Cohnsoft Search's separation of source adapters, ranking, and selectable perspectives. A PDS is a Personal Data Server, not a search-ranking algorithm. No Bluesky/PDS code is copied into this version. Cohnsoft Search is not an AT Protocol implementation, a Bluesky service, or endorsed by Bluesky. Account/PDS synchronization and third-party ranker federation are not implemented in v1.
+**AT Protocol and Bluesky**, https://atproto.com/guides/overview and https://github.com/bluesky-social/feed-generator : separation of data hosting, indexing/application views, and user-selected feed algorithms inspired Vigil Search's separation of source adapters, ranking, and selectable perspectives. A PDS is a Personal Data Server, not a search-ranking algorithm. No Bluesky/PDS code is copied into this version. Vigil Search is not an AT Protocol implementation, a Bluesky service, or endorsed by Bluesky. Account/PDS synchronization and third-party ranker federation are not implemented in v1.
 
 ## Published information retrieval algorithms
 
@@ -19,4 +19,4 @@ Original Python implementations adapt these published methods; they do not copy 
 - Robertson and Zaragoza, **The Probabilistic Relevance Framework: BM25 and Beyond**, 2009, https://doi.org/10.1561/1500000019 .
 - Carbonell and Goldstein, **The Use of MMR, Diversity-Based Reranking for Reordering Documents and Producing Summaries**, SIGIR 1998, https://doi.org/10.1145/290941.291025 . Our diversity penalty is inspired by MMR, not an exact implementation of that paper.
 
-Search results and snippets belong to their respective publishers. Provider availability and terms vary. No ads, paid placements, paid ranking, or affiliate link rewriting are added by Cohnsoft Search. Explicitly labeled upstream sponsored candidates are discarded; unlabeled advertising cannot be guaranteed detectable by this filter.
+Search results and snippets belong to their respective publishers. Provider availability and terms vary. No ads, paid placements, paid ranking, or affiliate link rewriting are added by Vigil Search. Explicitly labeled upstream sponsored candidates are discarded; unlabeled advertising cannot be guaranteed detectable by this filter.

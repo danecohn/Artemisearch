@@ -1,6 +1,6 @@
 use_default_settings: true
 general:
-  instance_name: Cohnsoft Search
+  instance_name: Vigil Search
   debug: false
   enable_metrics: false
   contact_url: https://www.amerika.social/support
@@ -10,7 +10,7 @@ brand:
   issue_url: https://github.com/danecohn/amerikasocial/issues
   custom:
     links:
-      Cohnsoft: https://www.amerika.social/
+      VigilTech: https://www.amerika.social/
       "Modified source (AGPL)": https://github.com/danecohn/Artemisearch
 search:
   safe_search: 1
