@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
-# Copyright 2026 Cohnsoft.
-"""Cohnsoft Search v1: deterministic, request-scoped candidate reranking.
+# Copyright 2026 VigilTech.
+"""Vigil Search v1: deterministic, request-scoped candidate reranking.
 
 Original implementation of published RRF, BM25 and MMR-style diversification.
 No click tracking, identity, paid boosts, remote ranker, or page fetching.
