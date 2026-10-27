@@ -1,14 +1,14 @@
-# Artemisearch
+# Cohnsoft Search
 
 **A clearer view of the web. No ads. No paid placements.**
 
-An open-source search engine by **Artemis Softworks LLC**, founded by **Demetria Althea Cohn**. Built from AltStackSearch and SearXNG with an original, explainable ranking layer and a quiet companion interface for Lookout, macOS, mobile, and any modern browser.
+An open-source search engine by **Cohnsoft**, founded by **Demetria Althea Cohn**. Built from AltStackSearch and SearXNG with an original, explainable ranking layer and a quiet companion interface for Lookout, macOS, mobile, and any modern browser.
 
 - Reciprocal-rank fusion + BM25 snippet relevance + source/text diversification.
 - Balanced, Research, and Discovery perspectives with result explanations.
 - No advertising, sponsored ranking, affiliate rewriting, or added query/click tracking.
 - macOS system typography, translucent chrome, rounded result cards, accessible touch-sized controls.
-- Lookout defaults to Artemisearch; Kagi, DuckDuckGo, and Google remain user choices.
+- Lookout defaults to Cohnsoft Search; Kagi, DuckDuckGo, and Google remain user choices.
 - No domain needed: initially served through the existing AltStack `/search/` route.
 
 This version is **metasearch**: it depends on upstream providers for candidates. It is not a web-scale independent index or a claim of superior search quality. AT Protocol inspired the architecture; no Bluesky code is reused and no PDS sync/federated ranker is claimed. See [attribution](ATTRIBUTION.md), [ranking and limits](docs/RANKING.md), and [LICENSE](LICENSE).
@@ -21,7 +21,7 @@ The Dockerfile preserves the baseline's pinned SearXNG image and builds/tests al
 
 ## Product direction
 
-Artemisearch is Artemis Softworks LLC's flagship: an Apple-first alternative for finding information and doing everyday work. Lookout is its native browser companion. Mind, Prompter, Artemis Drive, Office, and the creative tools form the surrounding software family. This is the product hierarchy, not a claim that every existing app already shares one backend, one subscription, native Swift implementation, or complete cross-app synchronization. Those integrations are developed and documented individually.
+Cohnsoft Search is Cohnsoft's flagship: an Apple-first alternative for finding information and doing everyday work. Lookout is its native browser companion. Mind, Prompter, Cohnsoft Drive, Office, and the creative tools form the surrounding software family. This is the product hierarchy, not a claim that every existing app already shares one backend, one subscription, native Swift implementation, or complete cross-app synchronization. Those integrations are developed and documented individually.
 
 ## Your perspective, your optional AI
 

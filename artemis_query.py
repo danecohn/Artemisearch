@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
-# Copyright 2026 Artemis Softworks LLC.
+# Copyright 2026 Cohnsoft.
 """Explicit, request-scoped hashtag narrowing. No inferred user profile."""
 import re
 try:

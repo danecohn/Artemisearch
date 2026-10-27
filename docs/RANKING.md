@@ -1,6 +1,6 @@
 # Artemis Rank v1
 
-The engine is ad-free **metasearch**, not yet a new web-scale crawl/index. SearXNG obtains candidates from enabled providers. Provider failures and empty responses are shown by the upstream UI; there is no silent fallback to a different branded search service. Artemisearch reranks at most 300 candidates per response, on that response's page, not across the entire web or every result page.
+The engine is ad-free **metasearch**, not yet a new web-scale crawl/index. SearXNG obtains candidates from enabled providers. Provider failures and empty responses are shown by the upstream UI; there is no silent fallback to a different branded search service. Cohnsoft Search reranks at most 300 candidates per response, on that response's page, not across the entire web or every result page.
 
 1. Reject explicitly marked advertisements and non-HTTP(S) or credential-bearing destinations.
 2. Deduplicate canonical URL keys without trackers/fragments. Original destination URLs are retained so signature-sensitive URLs are not broken. This is URL deduplication, not a claim to identify every syndicated article.
@@ -11,11 +11,11 @@ The engine is ad-free **metasearch**, not yet a new web-scale crawl/index. SearX
 
 “Why this result?” exposes source count, normalized text match, lens, and the fusion basis. A text-match percentage is relative to this response, **not** a truth score, confidence estimate, or probability. Explanations do not guarantee that a page is safe or accurate.
 
-Lenses travel with the current search request. They are not a user profile. No query history, click feedback, third-party analytics, ads, paid boosts, or AI summary hallucinations are added. Search providers and infrastructure still process requests. Optional existing AltStack account integration stores only explicitly saved search settings, not queries.
+Lenses travel with the current search request. They are not a user profile. No query history, click feedback, third-party analytics, ads, paid boosts, or AI summary hallucinations are added. Search providers and infrastructure still process requests. Optional existing Cohnsoft account integration stores only explicitly saved search settings, not queries.
 
 ## Evaluation
 
-`python3 -m unittest discover -s tests -v` checks ranking invariants and adversarial inputs. `python3 tests/evaluate.py` reports NDCG@5/MRR on a small, clearly labeled **synthetic** relevance set. This is a regression benchmark, not evidence that Artemisearch beats Google, Kagi, or other production search engines. A human-judged, diverse real-query corpus and latency/provider-availability studies are required before making comparative quality claims.
+`python3 -m unittest discover -s tests -v` checks ranking invariants and adversarial inputs. `python3 tests/evaluate.py` reports NDCG@5/MRR on a small, clearly labeled **synthetic** relevance set. This is a regression benchmark, not evidence that Cohnsoft Search beats Google, Kagi, or other production search engines. A human-judged, diverse real-query corpus and latency/provider-availability studies are required before making comparative quality claims.
 
 Inspired by the AT Protocol's separation of hosting, AppViews, and feed generators; attribution and algorithm references are in [ATTRIBUTION.md](../ATTRIBUTION.md).
 
