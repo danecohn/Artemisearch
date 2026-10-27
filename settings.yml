@@ -3,14 +3,14 @@ general:
   instance_name: Vigil Search
   debug: false
   enable_metrics: false
-  contact_url: https://www.amerika.social/support
-  privacypolicy_url: https://www.amerika.social/privacy
+  contact_url: https://vigiltech.org/support
+  privacypolicy_url: https://vigiltech.org/privacy
 brand:
   new_issue_url: https://github.com/danecohn/amerikasocial/issues
   issue_url: https://github.com/danecohn/amerikasocial/issues
   custom:
     links:
-      VigilTech: https://www.amerika.social/
+      VigilTech: https://vigiltech.org/
       "Modified source (AGPL)": https://github.com/danecohn/Artemisearch
 search:
   safe_search: 1
