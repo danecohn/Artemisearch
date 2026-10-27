@@ -34,3 +34,5 @@ AI overviews and follow-up questions are optional and off by default. Bring your
 This distribution incorporates SearXNG and remains AGPL-3.0-or-later; its upstream LICENSE and source-offer links are preserved. VigilTech-owned brand assets are GPL v3 and Vigil Sans is SIL OFL 1.1. The branding does not change search queries, ranking, hashtags, opt-in AI handling, endpoints or saved account preferences.
 
 A product of VigilTech, vigiltech.org.
+
+Icons: [VigilTech](https://github.com/danecohn/vigilicons), supplied `products/search` kit. Files copied unchanged.

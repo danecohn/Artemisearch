@@ -28,6 +28,10 @@ jobs:
           grep -q 'Vigil Search' /tmp/search.html
           curl -fsS http://localhost:8080/search/static/themes/simple/altstack.css -o /tmp/theme.css
           test -s /tmp/theme.css
+          curl -fsS http://localhost:8080/search/static/themes/simple/img/favicon.ico -o /tmp/vigil-search-favicon.ico
+          cmp /tmp/vigil-search-favicon.ico vigiltech/product-icons/search/web/favicon.ico
+          curl -fsS http://localhost:8080/search/static/themes/simple/vigiltech/product-icons/search/web/maskable-512.png -o /tmp/vigil-search-maskable.png
+          cmp /tmp/vigil-search-maskable.png vigiltech/product-icons/search/web/maskable-512.png
           curl -fsS http://localhost:8080/search/static/themes/simple/artemisearch.js | grep -q "Perspective"
           curl --compressed -fsS -H 'Accept-Language: en-US,en;q=0.9' -H 'X-Real-IP: 198.51.100.20' -H 'User-Agent: Mozilla/5.0 Firefox/158.0' -H 'Accept: text/html' http://localhost:8080/search/preferences -o /tmp/preferences.html
           grep -q 'Vigil Search' /tmp/preferences.html

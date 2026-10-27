@@ -114,3 +114,10 @@ for source,target in [('favicon-32.png','favicon.png'),('favicon.ico','favicon.i
 p=root/'templates/simple/base.html';text=p.read_text()
 text=text.replace('</head>',"<meta name=\"theme-color\" content=\"#120a14\"><meta property=\"og:title\" content=\"Vigil Search\"><meta property=\"og:image\" content=\"{{ url_for('static', filename='vigiltech/logos/social/vigiltech-social-1200x630.png', _external=True) }}\"></head>")
 p.write_text(text)
+
+# Exact assigned product web kit; company SVGs remain UI branding only.
+for source,target in [('favicon-32.png','favicon.png'),('favicon.ico','favicon.ico'),('apple-touch-icon.png','apple-touch-icon.png')]:
+ shutil.copy2(assets/'vigiltech/product-icons/search/web'/source,root/'static/themes/simple/img'/target)
+p=root/'templates/simple/base.html';text=p.read_text().replace('img/favicon.svg','img/favicon.ico')
+text=text.replace('</head>',"<link rel=\"apple-touch-icon\" href=\"{{ url_for('static', filename='vigiltech/product-icons/search/web/apple-touch-icon.png') }}\"><link rel=\"manifest\" href=\"{{ url_for('static', filename='vigiltech/product-icons/search/web/manifest.webmanifest') }}\"></head>")
+p.write_text(text)
