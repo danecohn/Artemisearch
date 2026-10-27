@@ -12,3 +12,8 @@ class Brand(unittest.TestCase):
   for old in ['--cs-','--vt-green-','.artemis-','.altstack-']:self.assertNotIn(old,css)
   self.assertIn('var(--vt-pink-600)',css);self.assertIn('prefers-reduced-transparency',css)
   self.assertIn('Vigil Search',(root/'brand.py').read_text())
+
+ def test_assigned_search_web_kit(self):
+  root=Path(__file__).resolve().parents[1]/'vigiltech/product-icons/search';m=json.loads((root/'SOURCE.json').read_text());self.assertEqual(m['product'],'search')
+  for file in m['files']:self.assertEqual(hashlib.sha256((root/file['path']).read_bytes()).hexdigest(),file['sha256'])
+  manifest=json.loads((root/'web/manifest.webmanifest').read_text());self.assertTrue(any(i.get('purpose')=='maskable' for i in manifest['icons']))
