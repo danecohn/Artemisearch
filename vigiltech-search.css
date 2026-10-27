@@ -100,3 +100,6 @@ body.vt:not(.index_endpoint) .vt-lenses,body.vt:not(.index_endpoint) .vt-tags-he
 .vt .result h3 a,.vt .result_header a{text-decoration:none;font-weight:700}.vt .result h3 a:hover{text-decoration:underline}
 .vt #search_header form,.vt #search_view,.vt .search_box,.vt #q{min-width:0;max-width:100%}.vt #send_search{flex:none}
 .vt #search_header .search_box{margin-right:0}
+
+/* The real upstream template gives nested link spans their own color. */
+.vt #links_on_top a span{color:inherit!important}
